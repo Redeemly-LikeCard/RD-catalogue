@@ -1,5 +1,5 @@
 {
-    "name": "redeemly/catalogue-integration",
+    "name": "redeemly/catalogue",
     "description": "Laravel package for Redeemly Catalogue services integration",
     "type": "library",
     "license": "MIT",
