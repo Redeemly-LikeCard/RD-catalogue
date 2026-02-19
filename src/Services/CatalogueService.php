@@ -46,7 +46,7 @@ class CatalogueService
     public function externalSignIn(ExternalSignInDto $dto): ApiResponse
     {
         try {
-            $response = $this->httpClient->post('/account/external-sign-in', [
+            $response = $this->httpClient->post('/api/v1/account/external-sign-in', [
                 'json' => $dto->toArray(),
             ]);
 
@@ -85,7 +85,7 @@ class CatalogueService
         try {
             $token = $this->ensureValidToken();
             
-            $response = $this->httpClient->get('/catalogue-adapter/view', [
+            $response = $this->httpClient->get('/api/v1/catalogue-adapter/view', [
                 'headers' => [
                     'Authorization' => 'Bearer '.$token,
                 ],
@@ -110,7 +110,7 @@ class CatalogueService
         try {
             $token = $this->ensureValidToken();
             
-            $response = $this->httpClient->post('/catalogue-adapter/pull', [
+            $response = $this->httpClient->post('/api/v1/catalogue-adapter/pull', [
                 'headers' => [
                     'Authorization' => 'Bearer '.$token,
                 ],
@@ -142,7 +142,7 @@ class CatalogueService
                 'token' => substr($token, 0, 20) . '...' // Log first 20 chars for security
             ]);
             
-            $response = $this->httpClient->get('/catalogue-adapter/customer-log', [
+            $response = $this->httpClient->get('/api/v1/catalogue-adapter/customer-log', [
                 'headers' => [
                     'Authorization' => 'Bearer '.$token,
                 ],

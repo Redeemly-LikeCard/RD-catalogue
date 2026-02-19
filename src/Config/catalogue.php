@@ -51,4 +51,17 @@ return [
         'ttl' => env('CATALOGUE_CACHE_TTL', 3600), // seconds
         'key' => env('CATALOGUE_CACHE_KEY', 'catalogue_access_token'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Routes Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Configuration for automatic route loading.
+    | Set to false to disable automatic route loading and add routes manually.
+    |
+    */
+    'routes' => [
+        'auto_load' => env('CATALOGUE_ROUTES_AUTO_LOAD', true),
+    ],
 ];

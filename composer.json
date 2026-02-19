@@ -1,5 +1,5 @@
 {
-    "name": "redeemly/catalogue",
+    "name": "redeemly/catalogue-integration",
     "description": "Laravel package for Redeemly Catalogue services integration",
     "type": "library",
     "license": "MIT",
@@ -22,7 +22,10 @@
     "autoload": {
         "psr-4": {
             "Redeemly\\CatalogueIntegration\\": "src/"
-        }
+        },
+        "files": [
+            "src/Routes/api.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

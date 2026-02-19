@@ -39,23 +39,28 @@ class CatalogueIntegrationServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Publish configuration
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../Config/catalogue.php' => config_path('catalogue.php'),
-            ], 'catalogue-config');
+        // Publish configuration and routes
+        $this->publishes([
+            __DIR__.'/../Config/catalogue.php' => config_path('catalogue.php'),
+        ], 'catalogue-config');
 
-            // Publish views
-            $this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/catalogue-integration'),
-            ], 'catalogue-views');
-        }
+        // Publish routes
+        $this->publishes([
+            __DIR__.'/../Routes/api.php' => base_path('routes/catalogue.php'),
+        ], 'catalogue-routes');
+
+        // Publish views
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/catalogue-integration'),
+        ], 'catalogue-views');
 
         // Load views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'catalogue-integration');
 
-        // Register routes (available for testing in all environments)
-        $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
+        // Load routes automatically (can be disabled via config)
+        if (config('catalogue.routes.auto_load', true)) {
+            $this->loadRoutesFrom(__DIR__.'/../Routes/api.php');
+        }
     }
 
     /**
